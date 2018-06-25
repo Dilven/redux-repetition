@@ -6,7 +6,7 @@ const initialState = {
 }
 
 export const mainReducer = (state = initialState, action) => {
-  switch(action) {
+  switch(action.type) {
     case constants.GET_DATA: 
       return({...state, posts: postsFromBase});
     default: 
