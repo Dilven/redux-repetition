@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import CSSTransitionGroup from 'react-addons-css-transition-group';
 
-const Photo = ({ post, index }) => {
+const Photo = ({ post, index, onClick }) => {
   return (
     <figure className="grid-figure">
       <div className="grid-photo-wrap">
@@ -18,7 +18,7 @@ const Photo = ({ post, index }) => {
     <figcaption>
       <p>{post.caption}</p>
       <div className="control-button">
-        <button className="likes">&hearts; {post.likes}</button>
+        <button onClick={onClick.bind(this, index)} className="likes">&hearts; {post.likes}</button>
       </div>
     </figcaption>
     </figure>

@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react';
 import { Link } from "react-router-dom";
 import { connect } from 'react-redux'
-import Single from './Single';
 import * as actions from '../actions/main';
 import PhotoGrid from './PhoteGrid';
 
@@ -11,18 +10,21 @@ class Main extends React.Component {
 
   constructor (props) {
     super(props);
+    this.handleLike = this.handleLike.bind(this);
   }
 
   componentDidMount () {
     this.props.getData();
+  };
+
+  handleLike(index, event) {
+    this.props.giveLike(index)
   }
   
   render() {
-    console.log(this.props)
     return (
       <div>
-        <h1><Link to="/">Reduxtagram</Link></h1>
-        <PhotoGrid posts={this.props.posts}/>
+        <PhotoGrid handleLike={this.handleLike} posts={this.props.posts}/>
       </div>
     )
   };
@@ -31,7 +33,8 @@ class Main extends React.Component {
 const mapStateToProps = (state) => ({...state.main});
 const mapDispatchToProps = (dispatch) => {
   return {
-      getData: ()  => dispatch(actions.getData())
+      getData: ()  => dispatch(actions.getData()),
+      giveLike: (index) => dispatch(actions.giveLike(index))
   };
 };
 
