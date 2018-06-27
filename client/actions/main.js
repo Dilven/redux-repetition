@@ -12,5 +12,25 @@ export function giveLike(index) {
     payload: {
       index
     }
-  }
-}
+  };
+};
+
+export function addComment(codePhoto, comment) {
+  return {
+    type: constants.ADD_COMMENT,
+    payload: {
+      comment,
+      codePhoto
+    }
+  };
+};
+
+export function deleteComment(codePhoto, index) {
+  return {
+    type: constants.DELETE_COMMENT,
+    payload: {
+      codePhoto,
+      index,
+    }
+  };
+};

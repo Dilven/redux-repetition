@@ -8,13 +8,11 @@ import * as actions from '../actions/main';
 const Single = ({ posts, match, giveLike, comments }) => {
   const codePhoto = match.params.code;
   const indexPhoto = posts.findIndex(el => el.code === codePhoto);
-  const commentsToPhoto = comments[posts[indexPhoto].code];
 
-  console.log(comments);
   return (
     <div className="single-photo">
       <Photo post={posts[indexPhoto]} index={indexPhoto} onClick={giveLike}/>
-      <Comments comments={commentsToPhoto}/>
+      <Comments codePhoto={codePhoto}/>
     </div>
   )
 };

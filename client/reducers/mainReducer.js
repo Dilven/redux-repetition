@@ -16,7 +16,15 @@ export const mainReducer = (state = initialState, action) => {
       const index = action.payload.index;
       const newPosts = [...state.posts];
       newPosts[index].likes ++;
-      return({...state, posts: newPosts})
+      return({...state, posts: newPosts});
+    case constants.ADD_COMMENT: 
+      let newComments = {...state.comments};
+      newComments[action.payload.codePhoto].push(action.payload.comment)
+      return({...state, comments: newComments});
+    case constants.DELETE_COMMENT: 
+      let comments = {...state.comments};
+      comments[action.payload.codePhoto].splice(action.payload.index, 1);
+      return ({...state, comments});
     default: 
       return ({...state});
   }
